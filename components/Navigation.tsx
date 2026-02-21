@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function PhoneIcon() {
   return (
@@ -21,27 +21,38 @@ const links = [
 ];
 
 export default function Navigation() {
-  const pathname = usePathname();
-  const [solid, setSolid] = useState(false);
-  const [open,  setOpen]  = useState(false);
+  const pathname  = usePathname();
+  const [solid,   setSolid]  = useState(false);
+  const [open,    setOpen]   = useState(false);
+  const [hidden,  setHidden] = useState(false);
+  const lastY = useRef(0);
 
   const norm = (p: string) => p.replace(/\/$/, "") || "/";
 
   useEffect(() => {
-    // Hysteresis: go solid at 60px, only go back transparent below 20px
-    // Prevents iOS rubber-band bounce from toggling the state
     const onScroll = () => {
-      const y = window.scrollY;
+      const y  = window.scrollY;
+      const mob = window.innerWidth <= 1020;
+
+      // Solid state with hysteresis (prevents iOS rubber-band flash)
       setSolid(prev => {
-        if (!prev && y > 60)  return true;
-        if (prev  && y < 20)  return false;
+        if (!prev && y > 60) return true;
+        if ( prev && y < 20) return false;
         return prev;
       });
+
+      // Mobile: hide nav when scrolling DOWN, show when scrolling UP
+      if (mob && !open) {
+        setHidden(y > 100 && y > lastY.current);
+      } else {
+        setHidden(false);
+      }
+      lastY.current = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [open]);
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -58,7 +69,8 @@ export default function Navigation() {
         borderBottom: solid || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
         backdropFilter: solid || open ? "blur(14px)" : "none",
         WebkitBackdropFilter: solid || open ? "blur(14px)" : "none",
-        transition: "background 0.35s ease, border-color 0.35s ease",
+        transform: hidden ? "translateY(-100%)" : "translateY(0)",
+        transition: "background 0.35s ease, border-color 0.35s ease, transform 0.3s ease",
       }}>
         <div style={{
           maxWidth: 1200, margin: "0 auto",
