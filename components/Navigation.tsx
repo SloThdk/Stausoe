@@ -68,7 +68,7 @@ export default function Navigation() {
                 position: "absolute", inset: 0,
                 backgroundImage: "url('/images/topfoto.jpg')",
                 backgroundSize: "480%",
-                backgroundPosition: "44% 33%",
+                backgroundPosition: "50% 32%",
               }} />
             </div>
           </Link>
