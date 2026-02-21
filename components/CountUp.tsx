@@ -38,7 +38,7 @@ export function CountUp({
           observer.disconnect();
         }
       },
-      { threshold: 0.6 }
+      { threshold: 0.1, rootMargin: "0px 0px -20% 0px" }
     );
     observer.observe(el);
     return () => { clearTimeout(fallback); observer.disconnect(); };
