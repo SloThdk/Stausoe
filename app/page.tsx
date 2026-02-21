@@ -52,7 +52,7 @@ export default function Home() {
           <p className="fade-up delay-1" style={{
             fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase",
             color: "var(--st-gold)", marginBottom: 24, fontWeight: 500,
-            textShadow: "0 1px 8px rgba(0,0,0,0.6)",
+            textShadow: "0 2px 12px rgba(0,0,0,0.8)",
           }}>
             Klintingvej 204 · Henne · Siden 1984
           </p>
@@ -67,10 +67,10 @@ export default function Home() {
           </h1>
 
           <p className="fade-up delay-3" style={{
-            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.85)",
+            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.95)",
             lineHeight: 1.8, maxWidth: 520, margin: "0 auto 52px",
             fontFamily: "var(--font-heading)", fontStyle: "italic",
-            textShadow: "0 1px 10px rgba(0,0,0,0.5)",
+            textShadow: "0 2px 12px rgba(0,0,0,0.8)",
           }}>
             Over 40 års tradition for god dansk mad,<br />
             hyggelige omgivelser og personlig betjening
@@ -103,9 +103,9 @@ export default function Home() {
 
           <a href="https://www.facebook.com/p/Restaurant-Staus%C3%B8-100057454214392/" target="_blank" rel="noopener noreferrer"
             className="fade-up delay-4"
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 36, fontSize: 12, color: "rgba(255,255,255,0.7)", textDecoration: "none", letterSpacing: "0.06em", transition: "color 0.2s", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 36, fontSize: 12, color: "rgba(255,255,255,0.9)", textDecoration: "none", letterSpacing: "0.06em", transition: "color 0.2s", textShadow: "0 2px 12px rgba(0,0,0,0.8)" }}
             onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>(e.currentTarget.style.color="var(--st-gold)")}
-            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>(e.currentTarget.style.color="rgba(255,255,255,0.45)")}>
+            onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>(e.currentTarget.style.color="rgba(255,255,255,0.9)")}>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
             </svg>
