@@ -52,6 +52,7 @@ export default function Home() {
           <p className="fade-up delay-1" style={{
             fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase",
             color: "var(--st-gold)", marginBottom: 24, fontWeight: 500,
+            textShadow: "0 1px 8px rgba(0,0,0,0.6)",
           }}>
             Klintingvej 204 · Henne · Siden 1984
           </p>
@@ -66,9 +67,10 @@ export default function Home() {
           </h1>
 
           <p className="fade-up delay-3" style={{
-            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.78)",
+            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.85)",
             lineHeight: 1.8, maxWidth: 520, margin: "0 auto 52px",
             fontFamily: "var(--font-heading)", fontStyle: "italic",
+            textShadow: "0 1px 10px rgba(0,0,0,0.5)",
           }}>
             Over 40 års tradition for god dansk mad,<br />
             hyggelige omgivelser og personlig betjening
