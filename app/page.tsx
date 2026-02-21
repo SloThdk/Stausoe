@@ -103,7 +103,7 @@ export default function Home() {
 
           <a href="https://www.facebook.com/p/Restaurant-Staus%C3%B8-100057454214392/" target="_blank" rel="noopener noreferrer"
             className="fade-up delay-4"
-            style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 36, fontSize: 12, color: "rgba(255,255,255,0.45)", textDecoration: "none", letterSpacing: "0.06em", transition: "color 0.2s" }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 36, fontSize: 12, color: "rgba(255,255,255,0.7)", textDecoration: "none", letterSpacing: "0.06em", transition: "color 0.2s", textShadow: "0 1px 8px rgba(0,0,0,0.6)" }}
             onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>)=>(e.currentTarget.style.color="var(--st-gold)")}
             onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>)=>(e.currentTarget.style.color="rgba(255,255,255,0.45)")}>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
