@@ -22,12 +22,12 @@ export default function MenuPage() {
         justifyContent: "center", overflow: "hidden",
       }}>
         <Image
-          src="/images/topfoto.jpg"
-          alt="Restaurant Stausø borde"
-          fill priority quality={85}
-          style={{ objectFit: "cover", objectPosition: "center 35%" }}
+          src="/images/interior_glasses.jpg"
+          alt="Elegant bordopdækning hos Restaurant Stausø"
+          fill priority quality={88}
+          style={{ objectFit: "cover", objectPosition: "center 55%" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(16,10,4,0.66)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(12,8,3,0.72)" }} />
         <div style={{ position: "relative", textAlign: "center", padding: "64px 24px 56px" }}>
           <p style={{ fontSize: 11, letterSpacing: "0.26em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
             Menukort

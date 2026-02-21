@@ -66,52 +66,49 @@ export default function Home() {
         display: "flex", alignItems: "center", justifyContent: "center",
         overflow: "hidden",
       }}>
-        {/* Background photo */}
+        {/* Background photo — their own restaurant photo with baked-in script logo */}
         <Image
-          src="/images/interior_glasses.jpg"
-          alt="Restaurant Stausø indretning"
+          src="/images/topfoto.jpg"
+          alt="Restaurant Stausø — indretning og atmosfære"
           fill
           priority
-          quality={90}
-          style={{ objectFit: "cover", objectPosition: "center 50%" }}
+          quality={92}
+          style={{ objectFit: "cover", objectPosition: "center 38%" }}
         />
-        {/* Warm dark overlay — not cold black */}
+        {/* Lighter gradient so the photo and its logo show clearly */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(20,12,4,0.48) 0%, rgba(20,12,4,0.72) 100%)",
+          background: "linear-gradient(to bottom, rgba(10,6,2,0.28) 0%, rgba(10,6,2,0.55) 60%, rgba(10,6,2,0.72) 100%)",
         }} />
+
+        {/* Hidden SEO h1 */}
+        <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0, pointerEvents: "none" }}>
+          Restaurant Stausø — Henne
+        </h1>
 
         <div style={{ textAlign: "center", position: "relative", maxWidth: 780, padding: "140px 24px 100px" }}>
           <p className="fade-up delay-1" style={{
-            fontSize: 12, letterSpacing: "0.26em", textTransform: "uppercase",
+            fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase",
             color: "var(--st-gold)", marginBottom: 28, fontWeight: 500,
           }}>
             Klintingvej 204 · Henne · Siden 1984
           </p>
 
-          <h1 className="fade-up delay-2" style={{
-            fontFamily: "var(--font-heading)", fontWeight: 700,
-            fontSize: "clamp(48px, 8vw, 96px)", lineHeight: 1.05,
-            color: "#fff", marginBottom: 32, letterSpacing: "-0.01em",
-          }}>
-            Restaurant<br />
-            <span style={{ color: "var(--st-gold)", fontStyle: "italic" }}>Stausø</span>
-          </h1>
-
-          <p className="fade-up delay-3" style={{
-            fontSize: "clamp(17px, 2vw, 21px)", color: "rgba(255,255,255,0.82)",
-            lineHeight: 1.75, maxWidth: 540, margin: "0 auto 48px",
+          <p className="fade-up delay-2" style={{
+            fontSize: "clamp(18px, 2.2vw, 24px)", color: "rgba(255,255,255,0.90)",
+            lineHeight: 1.75, maxWidth: 560, margin: "0 auto 52px",
             fontFamily: "var(--font-heading)", fontStyle: "italic",
+            textShadow: "0 2px 12px rgba(0,0,0,0.5)",
           }}>
             Over 40 års tradition for god dansk mad,<br />
             hyggelige omgivelser og personlig betjening
           </p>
 
-          <div className="fade-up delay-4" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="fade-up delay-3" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/selskaber" prefetch={false}
               className="btn-hover"
               style={{
-                padding: "16px 36px", borderRadius: 4,
+                padding: "16px 40px", borderRadius: 4,
                 background: "var(--st-gold)", color: "#fff",
                 fontSize: 13, fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.08em", textTransform: "uppercase",
@@ -122,8 +119,8 @@ export default function Home() {
             <Link href="/menu" prefetch={false}
               className="btn-ghost-hover"
               style={{
-                padding: "16px 36px", borderRadius: 4,
-                border: "1.5px solid rgba(255,255,255,0.5)", color: "#fff",
+                padding: "16px 40px", borderRadius: 4,
+                border: "1.5px solid rgba(255,255,255,0.55)", color: "#fff",
                 fontSize: 13, fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.08em", textTransform: "uppercase",
                 transition: "background 0.2s, border-color 0.2s",

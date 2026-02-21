@@ -28,6 +28,7 @@ export default function Footer() {
             {[
               { href: "/",             label: "Forside"      },
               { href: "/menu",         label: "Menukort"     },
+              { href: "/lokaler",      label: "Lokaler"      },
               { href: "/selskaber",    label: "Selskaber"    },
               { href: "/abningstider", label: "Åbningstider" },
               { href: "/kontakt",      label: "Kontakt"      },

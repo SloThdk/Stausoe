@@ -14,6 +14,7 @@ function PhoneIcon() {
 const links = [
   { href: "/",              label: "Forside"       },
   { href: "/menu",          label: "Menukort"      },
+  { href: "/lokaler",       label: "Lokaler"       },
   { href: "/selskaber",     label: "Selskaber"     },
   { href: "/abningstider",  label: "Åbningstider"  },
   { href: "/kontakt",       label: "Kontakt"       },
@@ -73,7 +74,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop links */}
-          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 36 }}>
+          <div className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: 24 }}>
             {links.map((l) => {
               const active = norm(pathname) === norm(l.href);
               return (
@@ -152,7 +153,7 @@ export default function Navigation() {
       </nav>
 
       <style>{`
-        @media (max-width: 820px) {
+        @media (max-width: 1020px) {
           .nav-desktop { display: none !important; }
           .nav-burger   { display: flex !important; }
         }
