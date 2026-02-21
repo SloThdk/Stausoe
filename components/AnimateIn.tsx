@@ -24,9 +24,12 @@ export default function AnimateIn({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    // Fallback: always show after 1.6s (catches Puppeteer/SSR screenshots)
+    const fallback = setTimeout(() => setVisible(true), 1600);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          clearTimeout(fallback);
           setVisible(true);
           observer.disconnect();
         }
@@ -34,7 +37,7 @@ export default function AnimateIn({
       { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
     );
     observer.observe(el);
-    return () => observer.disconnect();
+    return () => { clearTimeout(fallback); observer.disconnect(); };
   }, []);
 
   const from: CSSProperties = {

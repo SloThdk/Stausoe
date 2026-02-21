@@ -1,8 +1,15 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="14" height="14" style={{ flexShrink: 0 }}>
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12a19.79 19.79 0 0 1-3.07-8.67 2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.997 5.997l1.17-1.17a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+  );
+}
 
 const links = [
   { href: "/",           label: "Forside"    },
@@ -83,7 +90,8 @@ export default function Navigation() {
               );
             })}
             <a href="tel:75255101" style={{
-              padding: "9px 20px", borderRadius: 6,
+              display: "flex", alignItems: "center", gap: 7,
+              padding: "9px 20px", borderRadius: 4,
               background: "var(--st-gold)",
               color: "#fff", fontSize: 13, fontWeight: 600,
               textDecoration: "none", letterSpacing: "0.04em",
@@ -91,7 +99,7 @@ export default function Navigation() {
             }}
             onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
             onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
-              📞 75 25 51 01
+              <PhoneIcon /> 75 25 51 01
             </a>
           </div>
 
