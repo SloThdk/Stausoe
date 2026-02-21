@@ -4,39 +4,6 @@ import Image from "next/image";
 import AnimateIn from "@/components/AnimateIn";
 
 /* ── SVG ICONS ────────────────────────────────────────────── */
-function IconFork() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="26" height="26">
-      <path d="M3 2v6a4 4 0 0 0 4 4v10"/>
-      <path d="M15 2v20"/>
-      <path d="M21 2v6a4 4 0 0 1-4 4v10"/>
-    </svg>
-  );
-}
-function IconMeat() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="26" height="26">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M8 12s1-4 4-4 4 4 4 4"/>
-      <path d="M8 16s1-2 4-2 4 2 4 2"/>
-    </svg>
-  );
-}
-function IconCake() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" width="26" height="26">
-      <path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/>
-      <path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2 1 2 1"/>
-      <path d="M2 21h20"/>
-      <path d="M7 8v3"/>
-      <path d="M12 8v3"/>
-      <path d="M17 8v3"/>
-      <path d="M7 4h.01"/>
-      <path d="M12 4h.01"/>
-      <path d="M17 4h.01"/>
-    </svg>
-  );
-}
 function IconPhone() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
@@ -66,45 +33,47 @@ export default function Home() {
         display: "flex", alignItems: "center", justifyContent: "center",
         overflow: "hidden",
       }}>
-        {/* Background photo — their own restaurant photo with baked-in script logo */}
+        {/* Background photo — high-quality wine glasses, no baked-in text conflict */}
         <Image
-          src="/images/topfoto.jpg"
-          alt="Restaurant Stausø — indretning og atmosfære"
+          src="/images/interior_glasses.jpg"
+          alt="Restaurant Stausø — elegant bordopdækning"
           fill
           priority
           quality={92}
-          style={{ objectFit: "cover", objectPosition: "center 38%" }}
+          style={{ objectFit: "cover", objectPosition: "center 50%" }}
         />
-        {/* Lighter gradient so the photo and its logo show clearly */}
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(to bottom, rgba(10,6,2,0.28) 0%, rgba(10,6,2,0.55) 60%, rgba(10,6,2,0.72) 100%)",
+          background: "linear-gradient(to bottom, rgba(14,9,3,0.46) 0%, rgba(14,9,3,0.70) 100%)",
         }} />
-
-        {/* Hidden SEO h1 */}
-        <h1 style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", opacity: 0, pointerEvents: "none" }}>
-          Restaurant Stausø — Henne
-        </h1>
 
         <div style={{ textAlign: "center", position: "relative", maxWidth: 780, padding: "140px 24px 100px" }}>
           <p className="fade-up delay-1" style={{
             fontSize: 11, letterSpacing: "0.28em", textTransform: "uppercase",
-            color: "var(--st-gold)", marginBottom: 28, fontWeight: 500,
+            color: "var(--st-gold)", marginBottom: 24, fontWeight: 500,
           }}>
             Klintingvej 204 · Henne · Siden 1984
           </p>
 
-          <p className="fade-up delay-2" style={{
-            fontSize: "clamp(18px, 2.2vw, 24px)", color: "rgba(255,255,255,0.90)",
-            lineHeight: 1.75, maxWidth: 560, margin: "0 auto 52px",
+          <h1 className="fade-up delay-2" style={{
+            fontFamily: "var(--font-heading)", fontWeight: 700,
+            fontSize: "clamp(52px, 9vw, 104px)", lineHeight: 1.0,
+            color: "#fff", marginBottom: 28, letterSpacing: "-0.01em",
+          }}>
+            Restaurant<br />
+            <em style={{ color: "var(--st-gold)", fontStyle: "italic", fontWeight: 400 }}>Stausø</em>
+          </h1>
+
+          <p className="fade-up delay-3" style={{
+            fontSize: "clamp(16px, 1.8vw, 20px)", color: "rgba(255,255,255,0.78)",
+            lineHeight: 1.8, maxWidth: 520, margin: "0 auto 52px",
             fontFamily: "var(--font-heading)", fontStyle: "italic",
-            textShadow: "0 2px 12px rgba(0,0,0,0.5)",
           }}>
             Over 40 års tradition for god dansk mad,<br />
             hyggelige omgivelser og personlig betjening
           </p>
 
-          <div className="fade-up delay-3" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="fade-up delay-4" style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
             <Link href="/selskaber" prefetch={false}
               className="btn-hover"
               style={{
@@ -120,7 +89,7 @@ export default function Home() {
               className="btn-ghost-hover"
               style={{
                 padding: "16px 40px", borderRadius: 4,
-                border: "1.5px solid rgba(255,255,255,0.55)", color: "#fff",
+                border: "1.5px solid rgba(255,255,255,0.5)", color: "#fff",
                 fontSize: 13, fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.08em", textTransform: "uppercase",
                 transition: "background 0.2s, border-color 0.2s",
@@ -129,7 +98,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div style={{ marginTop: 88, opacity: 0.45 }}>
+          <div style={{ marginTop: 88, opacity: 0.4 }}>
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" style={{ margin: "0 auto", display: "block" }}>
               <path d="M12 5v14M5 12l7 7 7-7"/>
             </svg>
@@ -246,79 +215,76 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          MENU PREVIEW
+          MENU PREVIEW — dark, no white cards
       ═══════════════════════════════════════════════════ */}
-      <section style={{ background: "var(--st-stone)", padding: "110px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <section style={{ background: "var(--st-dark)", padding: "110px 24px" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
           <AnimateIn>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
-              <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
+            <div style={{ textAlign: "center", marginBottom: 72 }}>
+              <p style={{ fontSize: 11, letterSpacing: "0.26em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
                 Vores Menukort
               </p>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(30px, 4vw, 44px)", fontWeight: 700, color: "var(--st-dark)" }}>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(30px, 4vw, 48px)", fontWeight: 700, color: "#fff" }}>
                 Klassisk dansk køkken
               </h2>
             </div>
           </AnimateIn>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 24 }}>
-            {[
-              {
-                title: "Forretter",
-                desc: "Fra klassisk rejecocktail og tartelet til hvidvinsdampet fiskefilet og håndpillede krebsehaler.",
-                Icon: IconFork,
-                price: "fra 69 kr.",
-              },
-              {
-                title: "Stegeretter",
-                desc: "Møre stegeretter med årstidens grønt — fra flæskesteg med rødkål til kalvemørbrad med bearnaise.",
-                Icon: IconMeat,
-                price: "fra 124 kr.",
-              },
-              {
-                title: "Desserter",
-                desc: "Hjemmelavede desserter og fromager — afslut middagen med vores dessert- og kagebord.",
-                Icon: IconCake,
-                price: "fra 64 kr.",
-              },
-            ].map((cat, i) => (
-              <AnimateIn key={cat.title} delay={i * 80}>
-                <div className="card-hover" style={{
-                  background: "#fff", borderRadius: 4,
-                  border: "1px solid var(--st-border)",
-                  padding: "36px 32px",
-                  transition: "transform 0.25s, box-shadow 0.25s",
-                }}>
-                  <div style={{
-                    width: 52, height: 52, borderRadius: 8,
-                    background: "rgba(36,61,26,0.07)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    color: "var(--st-green)", marginBottom: 22,
-                  }}>
-                    <cat.Icon />
-                  </div>
-                  <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 24, fontWeight: 700, color: "var(--st-dark)", marginBottom: 12 }}>
-                    {cat.title}
-                  </h3>
-                  <p style={{ fontSize: 15, lineHeight: 1.75, color: "var(--st-muted)", marginBottom: 22 }}>{cat.desc}</p>
-                  <p style={{ fontSize: 12, color: "var(--st-gold)", fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" }}>{cat.price}</p>
+          {/* Elegant horizontal menu rows — no white boxes */}
+          {[
+            {
+              title: "Forretter",
+              desc: "Fra klassisk rejecocktail og tartelet til hvidvinsdampet fiskefilet og håndpillede krebsehaler.",
+              price: "fra 69 kr.",
+            },
+            {
+              title: "Stegeretter",
+              desc: "Møre stegeretter med årstidens grønt — fra flæskesteg med rødkål til kalvemørbrad med bearnaise.",
+              price: "fra 124 kr.",
+            },
+            {
+              title: "Desserter",
+              desc: "Hjemmelavede desserter og fromager — afslut middagen med vores dessert- og kagebord.",
+              price: "fra 64 kr.",
+            },
+            {
+              title: "Buffet & Brunch",
+              desc: "Tre sammensatte menuer til selskaber — Anretning, Buffet og Brunch. Minimum 25 personer.",
+              price: "fra 218 kr.",
+            },
+          ].map((cat, i) => (
+            <AnimateIn key={cat.title} delay={i * 60}>
+              <div style={{
+                display: "flex", alignItems: "baseline", justifyContent: "space-between",
+                gap: 32,
+                padding: "32px 0",
+                borderBottom: "1px solid rgba(255,255,255,0.10)",
+              }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{
+                    fontFamily: "var(--font-heading)", fontSize: "clamp(20px, 2.5vw, 26px)",
+                    fontWeight: 700, color: "#fff", marginBottom: 8,
+                  }}>{cat.title}</h3>
+                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.52)", lineHeight: 1.7 }}>{cat.desc}</p>
                 </div>
-              </AnimateIn>
-            ))}
-          </div>
+                <span style={{
+                  fontFamily: "var(--font-heading)", fontSize: 16, fontWeight: 500,
+                  color: "var(--st-gold)", flexShrink: 0, whiteSpace: "nowrap",
+                }}>{cat.price}</span>
+              </div>
+            </AnimateIn>
+          ))}
 
           <AnimateIn>
-            <div style={{ textAlign: "center", marginTop: 52 }}>
-              <Link href="/menu" prefetch={false} style={{
-                display: "inline-block", padding: "14px 36px", borderRadius: 4,
-                border: "1.5px solid var(--st-green)", color: "var(--st-green)",
+            <div style={{ textAlign: "center", paddingTop: 56 }}>
+              <Link href="/menu" prefetch={false} className="btn-hover" style={{
+                display: "inline-block", padding: "14px 40px", borderRadius: 4,
+                background: "var(--st-gold)", color: "#fff",
                 fontSize: 12, fontWeight: 600, textDecoration: "none",
                 letterSpacing: "0.1em", textTransform: "uppercase",
-                transition: "background 0.2s, color 0.2s",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = "var(--st-green)"; e.currentTarget.style.color = "#fff"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--st-green)"; }}>
-                Fuldt Menukort →
+                transition: "transform 0.2s, box-shadow 0.2s",
+              }}>
+                Se fuldt menukort →
               </Link>
             </div>
           </AnimateIn>
@@ -383,50 +349,69 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          BRUNCH / BUFFET
+          BRUNCH / BUFFET — photo-backed, no white cards
       ═══════════════════════════════════════════════════ */}
-      <section style={{ background: "var(--st-cream)", padding: "110px 24px" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden" }}>
+        <Image
+          src="/images/dining1.jpg"
+          alt="Buffet og brunch hos Restaurant Stausø"
+          fill quality={70}
+          style={{ objectFit: "cover", objectPosition: "center 30%" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(14,9,3,0.88)" }} />
+        <div style={{ position: "relative", maxWidth: 860, margin: "0 auto" }}>
           <AnimateIn>
-            <div style={{ textAlign: "center", marginBottom: 64 }}>
-              <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
+            <div style={{ textAlign: "center", marginBottom: 72 }}>
+              <p style={{ fontSize: 11, letterSpacing: "0.26em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
                 Buffeter & Brunch
               </p>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, color: "var(--st-dark)", marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, color: "#fff", marginBottom: 16 }}>
                 Komplet oplevelse for hele selskabet
               </h2>
-              <p style={{ fontSize: 16, color: "var(--st-muted)", maxWidth: 520, margin: "0 auto" }}>
-                Vælg mellem vores sammensatte buffetmenuer eller en lun søndagsbrunch. Min. 25 personer.
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.52)", maxWidth: 480, margin: "0 auto" }}>
+                Vælg mellem vores sammensatte buffetmenuer eller en lun brunch. Min. 25 personer.
               </p>
             </div>
           </AnimateIn>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
-            {[
-              { title: "Anretning", price: "218 kr.", desc: "Torskefad, Serranoskinke med pesto, glaseret skinke, croissant med hønsesalat, roastbeef og kvark-kage." },
-              { title: "Buffet",    price: "348 kr.", desc: "Indbagt tun, letsaltet skankesteg, kalvemørbrad, kalkun med ris, salatbar, 2 slags kartofler og dessertbord. Min. 25 pers." },
-              { title: "Brunch",   price: "295 kr.", desc: "Laksesalat, scrambleæg, frikadeller, rullepølse, pandekager, rugbrød og boller, ost, frugt, kaffe og te. Min. 25 pers." },
-            ].map((b, i) => (
-              <AnimateIn key={b.title} delay={i * 70}>
-                <div style={{
-                  background: "#fff", borderRadius: 4, overflow: "hidden",
-                  border: "1px solid var(--st-border)",
-                  boxShadow: "0 2px 16px rgba(0,0,0,0.04)",
-                }}>
-                  <div style={{ background: "var(--st-green)", padding: "22px 28px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 20, color: "#fff", fontWeight: 700 }}>{b.title}</h3>
-                    <span style={{ fontFamily: "var(--font-heading)", fontSize: 17, color: "var(--st-gold)", fontWeight: 600 }}>
-                      {b.price}{" "}
-                      <span style={{ fontSize: 11, color: "rgba(255,255,255,0.55)", fontFamily: "sans-serif", fontWeight: 400 }}>pr. pers.</span>
-                    </span>
-                  </div>
-                  <div style={{ padding: "24px 28px" }}>
-                    <p style={{ fontSize: 14, lineHeight: 1.85, color: "var(--st-muted)" }}>{b.desc}</p>
-                  </div>
+          {[
+            { title: "Anretning", price: "218 kr.", desc: "Torskefad, Serranoskinke med pesto, glaseret skinke, croissant med hønsesalat, roastbeef og kvark-kage." },
+            { title: "Buffet",    price: "348 kr.", desc: "Indbagt tun, letsaltet skankesteg, kalvemørbrad, kalkun med ris, salatbar, 2 slags kartofler og dessertbord." },
+            { title: "Brunch",   price: "295 kr.", desc: "Laksesalat, scrambleæg, frikadeller, rullepølse, pandekager, rugbrød og boller, ost, frugt, kaffe og te." },
+          ].map((b, i) => (
+            <AnimateIn key={b.title} delay={i * 65}>
+              <div style={{
+                display: "flex", alignItems: "baseline", justifyContent: "space-between",
+                gap: 32, padding: "30px 0",
+                borderBottom: "1px solid rgba(255,255,255,0.10)",
+              }}>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{
+                    fontFamily: "var(--font-heading)", fontSize: "clamp(20px, 2.5vw, 24px)",
+                    fontWeight: 700, color: "#fff", marginBottom: 8,
+                  }}>{b.title}</h3>
+                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.50)", lineHeight: 1.7 }}>{b.desc}</p>
                 </div>
-              </AnimateIn>
-            ))}
-          </div>
+                <div style={{ textAlign: "right", flexShrink: 0 }}>
+                  <span style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 600, color: "var(--st-gold)", display: "block" }}>{b.price}</span>
+                  <span style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", letterSpacing: "0.06em" }}>pr. person</span>
+                </div>
+              </div>
+            </AnimateIn>
+          ))}
+
+          <AnimateIn>
+            <div style={{ textAlign: "center", paddingTop: 52 }}>
+              <Link href="/selskaber" prefetch={false} style={{
+                display: "inline-block", padding: "13px 36px", borderRadius: 4,
+                border: "1.5px solid rgba(255,255,255,0.35)", color: "#fff",
+                fontSize: 12, fontWeight: 600, textDecoration: "none",
+                letterSpacing: "0.1em", textTransform: "uppercase",
+              }}>
+                Læs mere om selskaber →
+              </Link>
+            </div>
+          </AnimateIn>
         </div>
       </section>
 
