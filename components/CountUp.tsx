@@ -19,14 +19,10 @@ export function CountUp({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const fallback = setTimeout(() => {
-      if (!started.current) { started.current = true; setCount(target); }
-    }, 2000);
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
           started.current = true;
-          clearTimeout(fallback);
           const t0 = performance.now();
           const tick = (now: number) => {
             const p = Math.min((now - t0) / duration, 1);
@@ -41,7 +37,7 @@ export function CountUp({
       { threshold: 0.1, rootMargin: "0px 0px -20% 0px" }
     );
     observer.observe(el);
-    return () => { clearTimeout(fallback); observer.disconnect(); };
+    return () => { observer.disconnect(); };
   }, [target, duration]);
 
   return <span ref={ref} style={style}>{count}{suffix}</span>;
