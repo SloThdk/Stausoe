@@ -26,10 +26,11 @@ export default function Footer() {
               Navigation
             </h4>
             {[
-              { href: "/",          label: "Forside"   },
-              { href: "/menu",      label: "Menukort"  },
-              { href: "/selskaber", label: "Selskaber" },
-              { href: "/kontakt",   label: "Kontakt"   },
+              { href: "/",             label: "Forside"      },
+              { href: "/menu",         label: "Menukort"     },
+              { href: "/selskaber",    label: "Selskaber"    },
+              { href: "/abningstider", label: "Åbningstider" },
+              { href: "/kontakt",      label: "Kontakt"      },
             ].map(l => (
               <Link key={l.href} href={l.href} prefetch={false} style={{
                 display: "block", marginBottom: 12, textDecoration: "none",

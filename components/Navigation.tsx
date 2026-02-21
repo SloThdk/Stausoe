@@ -12,10 +12,11 @@ function PhoneIcon() {
 }
 
 const links = [
-  { href: "/",           label: "Forside"    },
-  { href: "/menu",       label: "Menukort"   },
-  { href: "/selskaber",  label: "Selskaber"  },
-  { href: "/kontakt",    label: "Kontakt"    },
+  { href: "/",              label: "Forside"       },
+  { href: "/menu",          label: "Menukort"      },
+  { href: "/selskaber",     label: "Selskaber"     },
+  { href: "/abningstider",  label: "Åbningstider"  },
+  { href: "/kontakt",       label: "Kontakt"       },
 ];
 
 export default function Navigation() {

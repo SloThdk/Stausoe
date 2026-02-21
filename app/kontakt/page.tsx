@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import AnimateIn from "@/components/AnimateIn";
 
 export default function KontaktPage() {
@@ -43,22 +44,32 @@ export default function KontaktPage() {
   ];
 
   return (
-    <main style={{ paddingTop: 68 }}>
-      {/* Header */}
+    <main>
+      {/* ── PAGE HEADER — real photo ── */}
       <section style={{
-        background: "linear-gradient(135deg, #243d1a 0%, #1a1208 100%)",
-        padding: "72px 24px 60px", textAlign: "center",
+        position: "relative", paddingTop: 68,
+        minHeight: 300, display: "flex", alignItems: "center",
+        justifyContent: "center", overflow: "hidden",
       }}>
-        <p style={{ fontSize: 12, letterSpacing: "0.18em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
-          Kontakt & Booking
-        </p>
-        <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(36px, 5vw, 60px)", color: "#fff", fontWeight: 700 }}>
-          Find os i Henne
-        </h1>
+        <Image
+          src="/images/exterior2.jpg"
+          alt="Restaurant Stausø bygning"
+          fill priority quality={85}
+          style={{ objectFit: "cover", objectPosition: "center 50%" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(14,9,4,0.65)" }} />
+        <div style={{ position: "relative", textAlign: "center", padding: "64px 24px 56px" }}>
+          <p style={{ fontSize: 11, letterSpacing: "0.26em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
+            Kontakt & Booking
+          </p>
+          <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(36px, 5vw, 64px)", color: "#fff", fontWeight: 700, lineHeight: 1.05 }}>
+            Find os i Henne
+          </h1>
+        </div>
       </section>
 
       {/* Content */}
-      <section style={{ background: "var(--st-cream)", padding: "80px 24px" }}>
+      <section style={{ background: "var(--st-cream)", padding: "80px 24px 100px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr", gap: 64, alignItems: "start" }}>
 
