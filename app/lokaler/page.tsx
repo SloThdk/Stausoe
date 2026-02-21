@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CountUp } from "@/components/CountUp";
 
 export const metadata = {
   title: "Lokaler — Restaurant Stausø",
@@ -70,7 +71,7 @@ export default function LokalerPage() {
               <div style={{ position: "absolute", bottom: 28, left: 28, right: 28 }}>
                 <p style={{ fontSize: 11, letterSpacing: "0.2em", color: "var(--st-gold)", textTransform: "uppercase", marginBottom: 8 }}>Stor sal</p>
                 <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(22px, 3vw, 32px)", color: "#fff", fontWeight: 700, marginBottom: 8 }}>
-                  Op til 140 gæster
+                  Op til <CountUp target={140} /> gæster
                 </h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", lineHeight: 1.6 }}>
                   Vores store festsal er ideel til konfirmationer, bryllupper, firmaevents og andre store arrangementer.
