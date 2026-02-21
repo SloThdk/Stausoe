@@ -12,23 +12,32 @@ function PhoneIcon() {
 }
 
 const links = [
-  { href: "/",              label: "Forside"       },
-  { href: "/menu",          label: "Menukort"      },
-  { href: "/lokaler",       label: "Lokaler"       },
-  { href: "/selskaber",     label: "Selskaber"     },
-  { href: "/abningstider",  label: "Åbningstider"  },
-  { href: "/kontakt",       label: "Kontakt"       },
+  { href: "/",             label: "Forside"      },
+  { href: "/menu",         label: "Menukort"     },
+  { href: "/lokaler",      label: "Lokaler"      },
+  { href: "/selskaber",    label: "Selskaber"    },
+  { href: "/abningstider", label: "Åbningstider" },
+  { href: "/kontakt",      label: "Kontakt"      },
 ];
 
 export default function Navigation() {
-  const pathname   = usePathname();
-  const [solid, setSolid]       = useState(false);
-  const [open, setOpen]         = useState(false);
+  const pathname = usePathname();
+  const [solid, setSolid] = useState(false);
+  const [open,  setOpen]  = useState(false);
 
   const norm = (p: string) => p.replace(/\/$/, "") || "/";
 
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 60);
+    // Hysteresis: go solid at 60px, only go back transparent below 20px
+    // Prevents iOS rubber-band bounce from toggling the state
+    const onScroll = () => {
+      const y = window.scrollY;
+      setSolid(prev => {
+        if (!prev && y > 60)  return true;
+        if (prev  && y < 20)  return false;
+        return prev;
+      });
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -36,20 +45,20 @@ export default function Navigation() {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  // Always dark — no cream/white flash. Transparent at top, warm dark when scrolled.
   const navBg = solid || open
-    ? "rgba(248,242,230,0.97)"
-    : "transparent";
-  const textColor   = solid || open ? "var(--st-text)"  : "#fff";
-  const borderColor = solid || open ? "var(--st-border)" : "transparent";
+    ? "rgba(16,10,4,0.97)"
+    : "rgba(0,0,0,0)";
 
   return (
     <>
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
         background: navBg,
-        borderBottom: `1px solid ${borderColor}`,
-        backdropFilter: solid || open ? "blur(12px)" : "none",
-        transition: "background 0.3s, border-color 0.3s",
+        borderBottom: solid || open ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
+        backdropFilter: solid || open ? "blur(14px)" : "none",
+        WebkitBackdropFilter: solid || open ? "blur(14px)" : "none",
+        transition: "background 0.35s ease, border-color 0.35s ease",
       }}>
         <div style={{
           maxWidth: 1200, margin: "0 auto",
@@ -59,13 +68,15 @@ export default function Navigation() {
         }}>
           {/* Logo */}
           <Link href="/" prefetch={false} style={{ display: "flex", alignItems: "center", textDecoration: "none", lineHeight: 1.1 }}>
-            <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 21, color: solid || open ? "var(--st-dark)" : "#fff", letterSpacing: "-0.01em" }}>
+            <span style={{
+              fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 21,
+              color: "#fff", letterSpacing: "-0.01em",
+            }}>
               Restaurant
             </span>
             <span style={{
               fontFamily: "var(--font-heading)", fontStyle: "italic", fontWeight: 400,
-              fontSize: 26, color: "var(--st-gold)",
-              marginLeft: 7, letterSpacing: "0.01em",
+              fontSize: 26, color: "var(--st-gold)", marginLeft: 7, letterSpacing: "0.01em",
             }}>
               Stausø
             </span>
@@ -80,10 +91,11 @@ export default function Navigation() {
                   fontSize: 13, fontWeight: 500,
                   letterSpacing: "0.08em", textTransform: "uppercase",
                   textDecoration: "none",
-                  color: active ? "var(--st-gold)" : textColor,
+                  color: active ? "var(--st-gold)" : "#fff",
                   paddingBottom: 4,
                   borderBottom: active ? "2px solid var(--st-gold)" : "2px solid transparent",
                   transition: "color 0.2s, border-color 0.2s",
+                  opacity: active ? 1 : 0.85,
                 }}>
                   {l.label}
                 </Link>
@@ -95,9 +107,9 @@ export default function Navigation() {
               background: "var(--st-gold)",
               color: "#fff", fontSize: 13, fontWeight: 600,
               textDecoration: "none", letterSpacing: "0.04em",
-              transition: "opacity 0.2s, transform 0.2s",
+              transition: "opacity 0.2s",
             }}
-            onMouseEnter={e => (e.currentTarget.style.opacity = "0.88")}
+            onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
             onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
               <PhoneIcon /> 75 25 51 01
             </a>
@@ -106,7 +118,7 @@ export default function Navigation() {
           {/* Burger */}
           <button onClick={() => setOpen(v => !v)} aria-label="Menu"
             className="nav-burger"
-            style={{ display: "none", background: "none", border: "none", padding: 8, color: textColor }}>
+            style={{ display: "none", background: "none", border: "none", padding: 8, color: "#fff" }}>
             {open ? (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -119,10 +131,11 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — dark */}
         {open && (
           <div style={{
-            background: "rgba(248,242,230,0.99)", borderTop: "1px solid var(--st-border)",
+            background: "rgba(16,10,4,0.99)",
+            borderTop: "1px solid rgba(255,255,255,0.08)",
             padding: "20px 24px 28px",
           }}>
             {links.map((l) => {
@@ -130,10 +143,10 @@ export default function Navigation() {
               return (
                 <Link key={l.href} href={l.href} prefetch={false} style={{
                   display: "block", padding: "14px 0",
-                  borderBottom: "1px solid var(--st-border)",
+                  borderBottom: "1px solid rgba(255,255,255,0.07)",
                   textDecoration: "none", fontSize: 16, fontWeight: 500,
-                  color: active ? "var(--st-gold)" : "var(--st-text)",
-                  letterSpacing: "0.04em",
+                  color: active ? "var(--st-gold)" : "#fff",
+                  letterSpacing: "0.04em", opacity: active ? 1 : 0.8,
                 }}>
                   {l.label}
                 </Link>
@@ -141,7 +154,7 @@ export default function Navigation() {
             })}
             <a href="tel:75255101" style={{
               display: "block", marginTop: 20, textAlign: "center",
-              padding: "14px 0", background: "var(--st-gold)", borderRadius: 8,
+              padding: "14px 0", background: "var(--st-gold)", borderRadius: 4,
               color: "#fff", fontWeight: 600, fontSize: 16, textDecoration: "none",
             }}>
               Ring: 75 25 51 01

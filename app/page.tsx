@@ -361,12 +361,12 @@ export default function Home() {
       ═══════════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden" }}>
         <Image
-          src="/images/topfoto.jpg"
+          src="/images/tables3.jpg"
           alt="Buffet og brunch hos Restaurant Stausø"
           fill quality={80}
           style={{ objectFit: "cover", objectPosition: "center 40%" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.88)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.86)" }} />
         <div style={{ position: "relative", maxWidth: 860, margin: "0 auto" }}>
           <AnimateIn>
             <div style={{ textAlign: "center", marginBottom: 72 }}>
