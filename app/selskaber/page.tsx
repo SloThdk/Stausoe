@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AnimateIn from "@/components/AnimateIn";
+import { CountUp } from "@/components/CountUp";
 
 function PhoneIcon() {
   return (
@@ -12,48 +13,25 @@ function PhoneIcon() {
 }
 
 const events = [
-  {
-    title: "Konfirmation",
-    desc: "Fejr den store dag med familie og venner. Vi hjælper med at skabe den perfekte ramme for en uforglemmelig konfirmationsfest med god dansk mad.",
-  },
-  {
-    title: "Bryllup",
-    desc: "Lad Restaurant Stausø danne det hyggelige og personlige baggrundstæppe for jeres bryllupsdag — stor som lille.",
-  },
-  {
-    title: "Mærkedage",
-    desc: "Rund fødselsdage, jubilæer og andre mærkedage af med stil. Vi klarer alt det praktiske, så I kan nyde fejringen.",
-  },
-  {
-    title: "Firmafester",
-    desc: "Styrk kollegaskabet med en velorganiseret firmafest i hyggelige og afslappende omgivelser. Minimum 20 kuverter.",
-  },
-  {
-    title: "Begravelseskaffe",
-    desc: "En afdæmpet og respektfuld ramme for en mindesammenkomst med klassisk dansk mad og et smukt kagebord.",
-  },
-  {
-    title: "Familiefester",
-    desc: "Genforeninger, sommerfester og familiedage — vi er vant til at tage os af hele familien i alle aldre.",
-  },
+  { title: "Konfirmation",    desc: "Fejr den store dag med familie og venner. Vi hjælper med at skabe den perfekte ramme for en uforglemmelig konfirmationsfest med god dansk mad." },
+  { title: "Bryllup",         desc: "Lad Restaurant Stausø danne det hyggelige og personlige baggrundstæppe for jeres bryllupsdag — stor som lille." },
+  { title: "Mærkedage",       desc: "Rund fødselsdage, jubilæer og andre mærkedage af med stil. Vi klarer alt det praktiske, så I kan nyde fejringen." },
+  { title: "Firmafester",     desc: "Styrk kollegaskabet med en velorganiseret firmafest i hyggelige og afslappende omgivelser. Minimum 20 kuverter." },
+  { title: "Begravelseskaffe",desc: "En afdæmpet og respektfuld ramme for en mindesammenkomst med klassisk dansk mad og et smukt kagebord." },
+  { title: "Familiefester",   desc: "Genforeninger, sommerfester og familiedage — vi er vant til at tage os af hele familien i alle aldre." },
 ];
 
 export default function SelskaberPage() {
   return (
     <main>
-      {/* ── PAGE HEADER — real photo ── */}
+      {/* ── PAGE HEADER ── */}
       <section style={{
         position: "relative", paddingTop: 68,
-        minHeight: 320, display: "flex", alignItems: "center",
-        justifyContent: "center", overflow: "hidden",
+        minHeight: 340, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden",
       }}>
-        <Image
-          src="/images/tables1.jpg"
-          alt="Festborde klar til selskab hos Stausø"
-          fill priority quality={85}
-          style={{ objectFit: "cover", objectPosition: "center 45%" }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(14,9,4,0.68)" }} />
+        <Image src="/images/tables1.jpg" alt="Festborde klar til selskab" fill priority quality={85}
+          style={{ objectFit: "cover", objectPosition: "center 45%" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.72)" }} />
         <div style={{ position: "relative", textAlign: "center", padding: "64px 24px 56px" }}>
           <p style={{ fontSize: 11, letterSpacing: "0.26em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
             Selskaber & Arrangementer
@@ -61,31 +39,32 @@ export default function SelskaberPage() {
           <h1 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(36px, 5vw, 64px)", color: "#fff", fontWeight: 700, lineHeight: 1.05, marginBottom: 16 }}>
             Vi holder din fest
           </h1>
-          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.62)", maxWidth: 520, margin: "0 auto" }}>
+          <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 520, margin: "0 auto" }}>
             Med plads til 140 gæster og 40 års erfaring er Restaurant Stausø det naturlige valg til store og små selskaber.
           </p>
         </div>
       </section>
 
-      {/* ── KAPACITET ── */}
-      <section style={{ background: "var(--st-stone)", padding: "64px 24px" }}>
+      {/* ── STATS — dark, CountUp ── */}
+      <section style={{ background: "var(--st-dark)", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 2 }}>
             {[
-              { n: "140", l: "Gæster i stor sal",   sub: "Til store selskaber og fester" },
-              { n: "20+", l: "Min. kuverter",       sub: "Ved alle menuer" },
-              { n: "40+", l: "Års erfaring",        sub: "Siden 1984" },
-              { n: "3",   l: "Buffet & brunch",     sub: "Sammensatte menuer" },
-            ].map((s, i) => (
-              <AnimateIn key={s.l} delay={i * 60}>
+              { target: 140, suffix: "",  label: "Gæster i stor sal",   sub: "Til store selskaber" },
+              { target: 20,  suffix: "+", label: "Min. kuverter",       sub: "Ved alle menuer"     },
+              { target: 40,  suffix: "+", label: "Års erfaring",        sub: "Siden 1984"          },
+              { target: 3,   suffix: "",  label: "Buffet & brunch",     sub: "Sammensatte menuer"  },
+            ].map((s) => (
+              <AnimateIn key={s.label} delay={0}>
                 <div style={{
-                  background: "#fff", padding: "36px 28px",
-                  textAlign: "center", borderRadius: 4,
-                  borderTop: "3px solid var(--st-gold)",
+                  background: "rgba(255,255,255,0.04)", padding: "36px 28px", textAlign: "center",
+                  borderTop: "2px solid var(--st-gold)",
                 }}>
-                  <p style={{ fontFamily: "var(--font-heading)", fontSize: 52, fontWeight: 700, color: "var(--st-dark)", lineHeight: 1, marginBottom: 8 }}>{s.n}</p>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: "var(--st-text)", marginBottom: 5, letterSpacing: "0.03em" }}>{s.l}</p>
-                  <p style={{ fontSize: 12, color: "var(--st-muted)" }}>{s.sub}</p>
+                  <CountUp target={s.target} suffix={s.suffix}
+                    style={{ fontFamily: "var(--font-heading)", fontSize: 52, fontWeight: 700, color: "var(--st-gold)", lineHeight: 1, display: "block", marginBottom: 8 }}
+                  />
+                  <p style={{ fontSize: 13, fontWeight: 600, color: "#fff", marginBottom: 4, letterSpacing: "0.03em" }}>{s.label}</p>
+                  <p style={{ fontSize: 12, color: "rgba(255,255,255,0.38)" }}>{s.sub}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -93,15 +72,15 @@ export default function SelskaberPage() {
         </div>
       </section>
 
-      {/* ── EVENT TYPES — elegant cards, no emojis ── */}
-      <section style={{ background: "var(--st-cream)", padding: "100px 24px" }}>
+      {/* ── EVENTS — dark, no white cards ── */}
+      <section style={{ background: "var(--st-dark)", padding: "100px 24px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <AnimateIn>
             <div style={{ textAlign: "center", marginBottom: 64 }}>
               <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
                 Hvad fejrer I?
               </p>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 700, color: "var(--st-dark)" }}>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 700, color: "#fff" }}>
                 Vi har erfaring med det hele
               </h2>
             </div>
@@ -109,20 +88,17 @@ export default function SelskaberPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 2 }}>
             {events.map((ev, i) => (
-              <AnimateIn key={ev.title} delay={i * 55}>
-                <div className="card-hover" style={{
-                  background: "#fff",
-                  borderLeft: "3px solid var(--st-gold)",
-                  padding: "32px 28px",
-                  transition: "transform 0.25s, box-shadow 0.25s",
+              <AnimateIn key={ev.title} delay={i * 45}>
+                <div style={{
+                  borderLeft: "2px solid var(--st-gold)",
+                  padding: "28px 28px",
+                  background: "rgba(255,255,255,0.03)",
+                  transition: "background 0.25s",
                 }}>
-                  <h3 style={{
-                    fontFamily: "var(--font-heading)", fontSize: 22, fontWeight: 700,
-                    color: "var(--st-dark)", marginBottom: 14,
-                  }}>
+                  <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 12 }}>
                     {ev.title}
                   </h3>
-                  <p style={{ fontSize: 14, color: "var(--st-muted)", lineHeight: 1.8 }}>{ev.desc}</p>
+                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.52)", lineHeight: 1.8 }}>{ev.desc}</p>
                 </div>
               </AnimateIn>
             ))}
@@ -130,21 +106,19 @@ export default function SelskaberPage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
-      <section style={{ background: "var(--st-stone)", padding: "100px 24px" }}>
+      {/* ── HOW IT WORKS — dark ── */}
+      <section style={{ background: "var(--st-dark)", padding: "100px 24px", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
           <AnimateIn>
             <div style={{ textAlign: "center", marginBottom: 60 }}>
-              <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>
-                Sådan foregår det
-              </p>
-              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(26px, 3.5vw, 40px)", fontWeight: 700, color: "var(--st-dark)" }}>
+              <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 16 }}>Sådan foregår det</p>
+              <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(26px, 3.5vw, 40px)", fontWeight: 700, color: "#fff" }}>
                 Fra idé til fest
               </h2>
             </div>
           </AnimateIn>
 
-          <div style={{ display: "grid", gap: 3 }}>
+          <div style={{ display: "grid", gap: 2 }}>
             {[
               { n: "01", title: "Ring til os",            desc: "Tag fat i os på 75 25 51 01 og fortæl om jeres arrangement — dato, antal gæster og ønsker." },
               { n: "02", title: "Vi sammensætter menuen", desc: "I samarbejde med kokken sætter vi en menu sammen der passer præcis til jeres selskab og smag." },
@@ -153,17 +127,14 @@ export default function SelskaberPage() {
               <AnimateIn key={step.n} delay={i * 80}>
                 <div style={{
                   display: "flex", gap: 28, alignItems: "flex-start",
-                  background: "#fff",
+                  background: "rgba(255,255,255,0.03)",
+                  borderLeft: "2px solid rgba(184,150,46,0.35)",
                   padding: "28px 28px",
-                  borderRadius: 4,
                 }}>
-                  <span style={{
-                    fontFamily: "var(--font-heading)", fontSize: 36, fontWeight: 700,
-                    color: "var(--st-gold)", flexShrink: 0, lineHeight: 1, minWidth: 52,
-                  }}>{step.n}</span>
+                  <span style={{ fontFamily: "var(--font-heading)", fontSize: 36, fontWeight: 700, color: "var(--st-gold)", flexShrink: 0, lineHeight: 1, minWidth: 48 }}>{step.n}</span>
                   <div>
-                    <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 700, color: "var(--st-dark)", marginBottom: 8 }}>{step.title}</h3>
-                    <p style={{ fontSize: 15, color: "var(--st-muted)", lineHeight: 1.8 }}>{step.desc}</p>
+                    <h3 style={{ fontFamily: "var(--font-heading)", fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{step.title}</h3>
+                    <p style={{ fontSize: 15, color: "rgba(255,255,255,0.52)", lineHeight: 1.8 }}>{step.desc}</p>
                   </div>
                 </div>
               </AnimateIn>
@@ -172,42 +143,28 @@ export default function SelskaberPage() {
         </div>
       </section>
 
-      {/* ── CTA — photo background ── */}
-      <section style={{
-        position: "relative", padding: "110px 24px", textAlign: "center", overflow: "hidden",
-      }}>
-        <Image
-          src="/images/dining2.jpg"
-          alt="Selskabsmiddag hos Restaurant Stausø"
-          fill quality={75}
-          style={{ objectFit: "cover", objectPosition: "center 50%" }}
-        />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(14,9,4,0.76)" }} />
+      {/* ── CTA ── */}
+      <section style={{ position: "relative", padding: "110px 24px", textAlign: "center", overflow: "hidden" }}>
+        <Image src="/images/dining2.jpg" alt="Selskabsmiddag" fill quality={72} style={{ objectFit: "cover", objectPosition: "center 50%" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.80)" }} />
         <AnimateIn>
           <div style={{ position: "relative" }}>
-            <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 20 }}>
-              Klar til at booke?
-            </p>
+            <p style={{ fontSize: 11, letterSpacing: "0.22em", color: "var(--st-gold)", textTransform: "uppercase", fontWeight: 600, marginBottom: 20 }}>Klar til at booke?</p>
             <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 4vw, 48px)", color: "#fff", fontWeight: 700, marginBottom: 18 }}>
               Ring og lad os planlægge<br />dit selskab
             </h2>
-            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.6)", marginBottom: 48, maxWidth: 440, margin: "0 auto 48px" }}>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.58)", marginBottom: 48, maxWidth: 440, margin: "0 auto 48px" }}>
               Vi vender hurtigt tilbage — ring eller send en besked.
             </p>
             <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
               <a href="tel:75255101" className="btn-hover" style={{
-                display: "flex", alignItems: "center", gap: 9,
-                padding: "16px 40px", borderRadius: 4,
-                background: "var(--st-gold)", color: "#fff",
-                fontSize: 15, fontWeight: 600, textDecoration: "none",
-                letterSpacing: "0.04em",
-                transition: "transform 0.2s, box-shadow 0.2s",
+                display: "flex", alignItems: "center", gap: 9, padding: "16px 40px", borderRadius: 4,
+                background: "var(--st-gold)", color: "#fff", fontSize: 15, fontWeight: 600, textDecoration: "none",
               }}>
                 <PhoneIcon /> 75 25 51 01
               </a>
               <Link href="/kontakt" prefetch={false} style={{
-                padding: "16px 40px", borderRadius: 4,
-                border: "1.5px solid rgba(255,255,255,0.38)", color: "#fff",
+                padding: "16px 40px", borderRadius: 4, border: "1.5px solid rgba(255,255,255,0.35)", color: "#fff",
                 fontSize: 15, fontWeight: 600, textDecoration: "none",
               }}>
                 Send besked

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import AnimateIn from "@/components/AnimateIn";
+import { CountUp } from "@/components/CountUp";
 
 /* ── SVG ICONS ────────────────────────────────────────────── */
 function IconPhone() {
@@ -127,10 +128,18 @@ export default function Home() {
                   Vores menukort er bygget op om de klassiske danske retter — fra en lun suppe og rejecocktail til møre stegeretter med årstidens grønt. Alt tilbehør aftales i samarbejde med kokken, så hvert selskab bliver præcis som I ønsker det.
                 </p>
                 <div style={{ display: "flex", gap: 44 }}>
-                  {[{ n: "40+", l: "Års erfaring" }, { n: "140", l: "Gæstepladser" }, { n: "20+", l: "Min. kuverter" }].map(s => (
-                    <div key={s.l}>
-                      <p style={{ fontFamily: "var(--font-heading)", fontSize: 38, fontWeight: 700, color: "var(--st-green)", lineHeight: 1 }}>{s.n}</p>
-                      <p style={{ fontSize: 11, color: "var(--st-muted)", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 8 }}>{s.l}</p>
+                  {[
+                    { target: 40, suffix: "+", label: "Års erfaring"  },
+                    { target: 140, suffix: "",  label: "Gæstepladser" },
+                    { target: 20,  suffix: "+", label: "Min. kuverter" },
+                  ].map(s => (
+                    <div key={s.label}>
+                      <CountUp
+                        target={s.target}
+                        suffix={s.suffix}
+                        style={{ fontFamily: "var(--font-heading)", fontSize: 42, fontWeight: 700, color: "var(--st-gold)", lineHeight: 1, display: "block" }}
+                      />
+                      <p style={{ fontSize: 11, color: "var(--st-muted)", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 10 }}>{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -292,13 +301,12 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          SELSKABER CALLOUT
+          SELSKABER CALLOUT — dark photo, no green
       ═══════════════════════════════════════════════════ */}
-      <section style={{
-        background: "linear-gradient(135deg, #1e3416 0%, #141008 100%)",
-        padding: "110px 24px",
-      }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden" }}>
+        <Image src="/images/tables2.jpg" alt="Selskab hos Restaurant Stausø" fill quality={70} style={{ objectFit: "cover", objectPosition: "center 40%" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.86)" }} />
+        <div style={{ position: "relative", maxWidth: 1100, margin: "0 auto" }}>
           <div className="selskaber-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
             <AnimateIn direction="left">
               <div>
@@ -308,38 +316,38 @@ export default function Home() {
                 <h2 style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(28px, 3.5vw, 44px)", color: "#fff", fontWeight: 700, lineHeight: 1.15, marginBottom: 28 }}>
                   Vi holder<br />din fest
                 </h2>
-                <p style={{ fontSize: 16, lineHeight: 1.9, color: "rgba(255,255,255,0.68)", marginBottom: 40 }}>
+                <p style={{ fontSize: 16, lineHeight: 1.9, color: "rgba(255,255,255,0.65)", marginBottom: 40 }}>
                   Konfirmation, bryllup, mærkedag eller firmafest — Restaurant Stausø danner den perfekte ramme. Vores store sal rummer op til 140 gæster, og en hyggeligere skænk tager sig af mindre selskaber.
                 </p>
-                <Link href="/selskaber" prefetch={false}
-                  className="btn-hover"
-                  style={{
-                    display: "inline-block", padding: "14px 32px", borderRadius: 4,
-                    background: "var(--st-gold)", color: "#fff",
-                    fontSize: 12, fontWeight: 600, textDecoration: "none",
-                    letterSpacing: "0.1em", textTransform: "uppercase",
-                    transition: "transform 0.2s, box-shadow 0.2s",
-                  }}>
+                <Link href="/selskaber" prefetch={false} className="btn-hover" style={{
+                  display: "inline-block", padding: "14px 32px", borderRadius: 4,
+                  background: "var(--st-gold)", color: "#fff",
+                  fontSize: 12, fontWeight: 600, textDecoration: "none",
+                  letterSpacing: "0.1em", textTransform: "uppercase",
+                  transition: "transform 0.2s, box-shadow 0.2s",
+                }}>
                   Læs mere om selskaber →
                 </Link>
               </div>
             </AnimateIn>
 
             <AnimateIn direction="right">
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}>
                 {[
-                  { n: "140", l: "Gæster i stor sal" },
-                  { n: "40+", l: "Års erfaring" },
-                  { n: "20+", l: "Min. kuverter" },
-                  { n: "3",   l: "Buffet & brunch" },
+                  { target: 140, suffix: "",  label: "Gæster i stor sal" },
+                  { target: 40,  suffix: "+", label: "Års erfaring"      },
+                  { target: 20,  suffix: "+", label: "Min. kuverter"     },
+                  { target: 3,   suffix: "",  label: "Buffet & brunch"   },
                 ].map(s => (
-                  <div key={s.l} style={{
-                    background: "rgba(255,255,255,0.05)", borderRadius: 4,
-                    border: "1px solid rgba(255,255,255,0.08)",
+                  <div key={s.label} style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.09)",
                     padding: "28px 24px",
                   }}>
-                    <p style={{ fontFamily: "var(--font-heading)", fontSize: 42, fontWeight: 700, color: "var(--st-gold)", lineHeight: 1, marginBottom: 10 }}>{s.n}</p>
-                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)", lineHeight: 1.5, letterSpacing: "0.04em" }}>{s.l}</p>
+                    <CountUp target={s.target} suffix={s.suffix}
+                      style={{ fontFamily: "var(--font-heading)", fontSize: 44, fontWeight: 700, color: "var(--st-gold)", lineHeight: 1, marginBottom: 10, display: "block" }}
+                    />
+                    <p style={{ fontSize: 12, color: "rgba(255,255,255,0.45)", lineHeight: 1.5, letterSpacing: "0.04em", marginTop: 10 }}>{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -353,12 +361,12 @@ export default function Home() {
       ═══════════════════════════════════════════════════ */}
       <section style={{ position: "relative", padding: "110px 24px", overflow: "hidden" }}>
         <Image
-          src="/images/dining1.jpg"
+          src="/images/topfoto.jpg"
           alt="Buffet og brunch hos Restaurant Stausø"
-          fill quality={70}
-          style={{ objectFit: "cover", objectPosition: "center 30%" }}
+          fill quality={80}
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(14,9,3,0.88)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(10,6,2,0.88)" }} />
         <div style={{ position: "relative", maxWidth: 860, margin: "0 auto" }}>
           <AnimateIn>
             <div style={{ textAlign: "center", marginBottom: 72 }}>

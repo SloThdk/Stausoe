@@ -57,20 +57,18 @@ export default function Navigation() {
           padding: "0 24px", height: 68,
           justifyContent: "space-between",
         }}>
-          {/* Logo — cropped from their actual restaurant photo */}
-          <Link href="/" prefetch={false} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
-            <div style={{
-              width: 144, height: 46, overflow: "hidden", position: "relative", borderRadius: 3,
-              boxShadow: solid || open ? "0 2px 12px rgba(0,0,0,0.18)" : "none",
-              transition: "box-shadow 0.3s",
+          {/* Logo */}
+          <Link href="/" prefetch={false} style={{ display: "flex", alignItems: "center", textDecoration: "none", lineHeight: 1.1 }}>
+            <span style={{ fontFamily: "var(--font-heading)", fontWeight: 700, fontSize: 21, color: solid || open ? "var(--st-dark)" : "#fff", letterSpacing: "-0.01em" }}>
+              Restaurant
+            </span>
+            <span style={{
+              fontFamily: "var(--font-heading)", fontStyle: "italic", fontWeight: 400,
+              fontSize: 26, color: "var(--st-gold)",
+              marginLeft: 7, letterSpacing: "0.01em",
             }}>
-              <div style={{
-                position: "absolute", inset: 0,
-                backgroundImage: "url('/images/topfoto.jpg')",
-                backgroundSize: "480%",
-                backgroundPosition: "50% 32%",
-              }} />
-            </div>
+              Stausø
+            </span>
           </Link>
 
           {/* Desktop links */}
