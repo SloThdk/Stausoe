@@ -123,7 +123,9 @@ export default function MenuPage() {
                       <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                         {b.items.map((item, i) => (
                           <li key={i} style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", padding: "4px 0", display: "flex", alignItems: "flex-start", gap: 10 }}>
-                            <span style={{ color: "var(--st-gold)", flexShrink: 0, marginTop: 1, fontSize: 14, lineHeight: 1 }}>—</span>
+                            <svg viewBox="0 0 8 8" width="8" height="8" style={{ flexShrink: 0, marginTop: 5 }}>
+                              <circle cx="4" cy="4" r="2.5" fill="var(--st-gold)" />
+                            </svg>
                             {item}
                           </li>
                         ))}

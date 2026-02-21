@@ -59,7 +59,7 @@ export default function LokalerPage() {
       </section>
 
       {/* ── INTRO — two spaces ── */}
-      <section style={{ background: "var(--st-cream)", padding: "80px 24px" }}>
+      <section style={{ background: "var(--st-dark)", padding: "80px 24px" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto" }}>
           <div className="spaces-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 3 }}>
 
